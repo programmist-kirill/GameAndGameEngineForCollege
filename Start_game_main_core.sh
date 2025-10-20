@@ -1,0 +1,1 @@
+gnome-terminal --title="game_main_core" -- python3 /home/kirill/NOT_DELETE_FOLDER/game_for_college/game_main_core.py

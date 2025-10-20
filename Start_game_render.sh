@@ -1,0 +1,1 @@
+gnome-terminal --title="Game Render" -- python3 /home/kirill/NOT_DELETE_FOLDER/game_for_college/Render_output.py
