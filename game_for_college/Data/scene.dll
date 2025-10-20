@@ -1,0 +1,85 @@
+import os
+import sys
+
+sys.path.append("/home/kirill/NOT_DELETE_FOLDER/game_for_college/")
+import Render_core
+
+def obtaining_the_necessary_resources():
+
+    with open("/home/kirill/NOT_DELETE_FOLDER/game_for_college/Data/key.asset" , "r") as file:
+        key = file.read().strip()
+
+    with open("/home/kirill/NOT_DELETE_FOLDER/game_for_college/Data/door.asset" , "r") as file:
+        door = file.read().strip()
+    
+    with open("/home/kirill/NOT_DELETE_FOLDER/game_for_college/Data/Player.asset" , "r") as file:
+        player = file.read().strip()
+    
+    return key , door , player
+
+def initial_scene():
+
+    key , door , player = obtaining_the_necessary_resources()
+
+    #key > player = 3
+    #player > door = 6
+
+    scene = key + "   " + player + "      " + door
+
+    Render_core.Render_game_college.Render_scene(scene)
+
+def scene_without_a_key():
+    key , door , player = obtaining_the_necessary_resources()
+
+    scene = player + "         "
+
+    Render_core.Render_game_college.Render_scene(scene)
+
+class Change_the_position_of_the_main_characters_in_the_standart_scene:
+
+    def right():
+        if os.path.exists("/home/kirill/game_engine_new/Cache/Player.asset"):
+            with open("/home/kirill/game_engine_new/Cache/Player.asset" , "r") as file:
+                player_asset = file.read()
+            
+        else:
+            with open("/home/kirill/NOT_DELETE_FOLDER/game_for_college/Data/Player.asset" , "r") as file:
+                player_asset = file.read().strip()
+
+        with open("/home/kirill/NOT_DELETE_FOLDER/game_for_college/Data/door.asset" , "r") as file:
+            door = file.read().strip()
+
+        door = list(door)
+        if door[0] == " ":
+            door[0] == ""
+        door = "".join(door)
+        
+        player_asset = " " + player_asset
+
+        scene = player_asset + door
+
+        print(scene)
+
+        #! Render_core.Render_game_college.Render_scene()
+
+
+def main():
+    print("---------------\ninit scene.dll\n---------------")
+
+    if os.path.exists("/home/kirill/NOT_DELETE_FOLDER/game_for_college/does_the_key_exist"):
+        with open("/home/kirill/NOT_DELETE_FOLDER/game_for_college/does_the_key_exist" , "r") as file:
+            does_the_key_exist = file.read().strip()
+        
+        if does_the_key_exist == "n":
+            scene_without_a_key()
+    
+    if os.path.exists("/home/kirill/game_engine_new/Cache/keyboard.word"):
+        with open("/home/kirill/game_engine_new/Cache/keyboard.word" , "r") as file:
+            keyboard_word = file.read().strip()
+        
+        if keyboard_word == "d":
+            Change_the_position_of_the_main_characters_in_the_standart_scene.right()
+
+#! main()
+
+Change_the_position_of_the_main_characters_in_the_standart_scene.right()

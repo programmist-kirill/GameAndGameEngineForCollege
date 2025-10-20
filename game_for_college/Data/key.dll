@@ -1,0 +1,14 @@
+import os
+from termcolor import colored
+
+DIRECTORY_CACHE_INDEX_WORK_A = "/home/kirill/NOT_DELETE_FOLDER/game_for_college/index_work_a.cache"
+
+if os.path.exists(DIRECTORY_CACHE_INDEX_WORK_A):
+    with open(DIRECTORY_CACHE_INDEX_WORK_A , "r") as file:
+        index_work_a = file.read().strip()
+
+    if index_work_a == "2":
+        with open("/home/kirill/NOT_DELETE_FOLDER/game_for_college/does_the_key_exist" , "w") as fp:
+            fp.write("n")
+        
+        os.system("python /home/kirill/NOT_DELETE_FOLDER/game_for_college/Data/scene.dll")
